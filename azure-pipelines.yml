@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
   pool:
-  vmImage: windows-latest
+  vm2Image: windows-latest
 
 steps:
 - script: echo Hello, world!
