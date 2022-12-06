@@ -19,10 +19,33 @@ dependencies:
   cupertino_icons: any
   outline_material_icons: ^0.1.1
   google_fonts: any
-  firebase_auth: any
+  # firebase_auth: any
   #firebase_auth_ui: any
-  firebase_core: any
+  # firebase_core: any
   flutter_riverpod: any
+  nb_utils: ^4.4.12
+  intl: ^0.17.0
+  flutter_vector_icons: ^1.0.0
+
+
+    # Common
+  share: ^2.0.4
+  url_launcher: ^6.0.20
+  http: ^0.13.4
+  html: ^0.15.0
+  package_info: ^2.0.2
+
+  # IMAGES
+
+  # STATE MANAGEMENT
+  mobx: ^2.0.6+1
+  flutter_mobx: ^2.0.4
+
+  # MAP
+  google_maps_flutter: ^2.1.1
+
+  # UI
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
@@ -38,4 +61,4 @@ flutter:
 
 
   assets:
-    - assets/images/  
+    - images/  
