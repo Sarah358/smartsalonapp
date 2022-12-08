@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 import '../components/BMSocialIconsLoginComponents.dart';
 import '../main.dart';
@@ -8,6 +10,9 @@ import '../utils/BMWidgets.dart';
 // import 'BMDashboardScreen.dart';
 //import 'BMForgetPasswordScreen.dart';
 import 'BMRegisterScreen.dart';
+import 'BMWalkThroughScreen.dart';
+import 'home.dart';
+import 'package:fluttersalonapp/controllers/auth_controller.dart';
 
 class BMLoginScreen extends StatefulWidget {
   const BMLoginScreen({Key? key}) : super(key: key);
@@ -18,6 +23,8 @@ class BMLoginScreen extends StatefulWidget {
 
 class _BMLoginScreenState extends State<BMLoginScreen> {
   FocusNode password = FocusNode();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -28,6 +35,8 @@ class _BMLoginScreenState extends State<BMLoginScreen> {
   @override
   void dispose() {
     setStatusBarColor(Colors.transparent);
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -66,6 +75,7 @@ class _BMLoginScreenState extends State<BMLoginScreen> {
                   30.height,
                   Text('Enter your email', style: primaryTextStyle(color: appStore.isDarkModeOn ? bmTextColorDarkMode : bmSpecialColor, size: 14)),
                   AppTextField(
+                      controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     nextFocus: password,
                     textFieldType: TextFieldType.EMAIL,
@@ -92,6 +102,8 @@ class _BMLoginScreenState extends State<BMLoginScreen> {
                     ],
                   ),
                   AppTextField(
+                      controller: passwordController,
+                      //obscureText: true,  
                     focus: password,
                     textFieldType: TextFieldType.PASSWORD,
                     autoFocus: true,
@@ -112,9 +124,26 @@ class _BMLoginScreenState extends State<BMLoginScreen> {
                         child: Text('Login', style: boldTextStyle(color: Colors.white)),
                         padding: EdgeInsets.all(16),
                         color: bmPrimaryColor,
-                        onTap: () {
-                        //  BMDashboardScreen(flag: false).launch(context);
-                        },
+                        onTap:() async{
+                     final message = await AuthService().login(
+                  email: emailController.text,
+                  password: passwordController.text,
+                );
+                if (message!.contains('Success')) {
+                  // Navigator.of(context).pushReplacement(
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const Home(),
+                  //   ),
+                  // );
+                   BMWalkThroughScreen().launch(context);
+
+                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(message),
+                  ),
+                );
+                        } ,
                       ).expand(),
                       16.width,
                       AppButton(
@@ -144,5 +173,6 @@ class _BMLoginScreenState extends State<BMLoginScreen> {
         ],
       ),
     );
+ 
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttersalonapp/screens/BMWalkThroughScreen.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../components/BMSocialIconsLoginComponents.dart';
@@ -7,6 +8,9 @@ import '../utils/BMColors.dart';
 import '../utils/BMWidgets.dart';
 //import 'BMEnableLocationScreen.dart';
 import 'BMLoginScreen.dart';
+import 'home.dart';
+import 'package:fluttersalonapp/controllers/auth_controller.dart';
+
 
 class BMRegisterScreen extends StatefulWidget {
   const BMRegisterScreen({Key? key}) : super(key: key);
@@ -17,6 +21,8 @@ class BMRegisterScreen extends StatefulWidget {
 
 class _BMRegisterScreenState extends State<BMRegisterScreen> {
   FocusNode password = FocusNode();
+   final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -27,6 +33,8 @@ class _BMRegisterScreenState extends State<BMRegisterScreen> {
   @override
   void dispose() {
     setStatusBarColor(Colors.transparent);
+      emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -62,6 +70,7 @@ class _BMRegisterScreenState extends State<BMRegisterScreen> {
                     30.height,
                     Text('Enter your email', style: primaryTextStyle(color: appStore.isDarkModeOn ? bmTextColorDarkMode : bmSpecialColor, size: 14)),
                     AppTextField(
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       nextFocus: password,
                       textFieldType: TextFieldType.EMAIL,
@@ -77,6 +86,7 @@ class _BMRegisterScreenState extends State<BMRegisterScreen> {
                     20.height,
                     Text('Password', style: primaryTextStyle(color: appStore.isDarkModeOn ? bmTextColorDarkMode : bmSpecialColor, size: 14)),
                     AppTextField(
+                      controller: passwordController,
                       focus: password,
                       textFieldType: TextFieldType.PASSWORD,
                       autoFocus: true,
@@ -96,7 +106,21 @@ class _BMRegisterScreenState extends State<BMRegisterScreen> {
                       child: Text('Join Now', style: boldTextStyle(color: Colors.white)),
                       padding: EdgeInsets.all(16),
                       color: bmPrimaryColor,
-                      onTap: () {
+                      onTap: () async {
+                             final message = await AuthService().registration(
+                  email: emailController.text,
+                  password: passwordController.text,
+                );
+                if (message!.contains('Success')) {
+                       BMWalkThroughScreen().launch(context);
+                  //Navigator.of(context).pushReplacement(
+                     // MaterialPageRoute(builder: (context) => const Home()));
+                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(message),
+                  ),
+                );
                        // BMEnableLocationScreen().launch(context);
                       },
                     ),

@@ -19,13 +19,16 @@ dependencies:
   cupertino_icons: any
   outline_material_icons: ^0.1.1
   google_fonts: any
-  # firebase_auth: any
+  firebase_auth: any
   #firebase_auth_ui: any
-  # firebase_core: any
+  firebase_core: any
   flutter_riverpod: any
   nb_utils: ^4.4.12
   intl: ^0.17.0
-  flutter_vector_icons: ^1.0.0
+  flutter_vector_icons: ^2.0.0
+  cloud_firestore: ^4.1.0
+  get:
+
 
 
     # Common
@@ -45,7 +48,7 @@ dependencies:
   google_maps_flutter: ^2.1.1
 
   # UI
-  flutter_svg: ^0.22.0
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:

@@ -7,14 +7,21 @@ import 'package:fluttersalonapp/utils/BMDataGenerator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:get/get.dart';
+import 'package:fluttersalonapp/controllers/auth_controller.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+
+
 
 AppStore appStore = AppStore();
 
 int currentIndex = 0;
 
-void main() async {
+Future main() async {
   //region Entry Point
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp().then((value) => Get.put(AuthService()));
   await initialize(aLocaleLanguageList: languageList());
 
   appStore.toggleDarkMode(value: getBoolAsync(isDarkModeOnPref));
@@ -30,7 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => MaterialApp(
+      builder: (_) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: '$appName${!isMobile ? ' ${platformName()}' : ''}',
         home: const BMSplashScreen(),
