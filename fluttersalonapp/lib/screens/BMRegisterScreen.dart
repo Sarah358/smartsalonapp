@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:fluttersalonapp/screens/BMWalkThroughScreen.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../components/BMSocialIconsLoginComponents.dart';
 import '../main.dart';
 import '../utils/BMColors.dart';
 import '../utils/BMWidgets.dart';
-//import 'BMEnableLocationScreen.dart';
+import 'BMEnableLocationScreen.dart';
 import 'BMLoginScreen.dart';
-import 'home.dart';
+
+import 'BMDashboardScreen.dart';
+
 import 'package:fluttersalonapp/controllers/auth_controller.dart';
 
 
@@ -112,7 +113,7 @@ class _BMRegisterScreenState extends State<BMRegisterScreen> {
                   password: passwordController.text,
                 );
                 if (message!.contains('Success')) {
-                       BMWalkThroughScreen().launch(context);
+                       BMDashboardScreen(flag: false,).launch(context);
                   //Navigator.of(context).pushReplacement(
                      // MaterialPageRoute(builder: (context) => const Home()));
                 }

@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-
 import '../components/BMSocialIconsLoginComponents.dart';
 import '../main.dart';
 import '../utils/BMColors.dart';
 import '../utils/BMWidgets.dart';
-// import 'BMDashboardScreen.dart';
-//import 'BMForgetPasswordScreen.dart';
+import 'BMForgetPasswordScreen.dart';
 import 'BMRegisterScreen.dart';
-import 'BMWalkThroughScreen.dart';
-import 'home.dart';
+import 'BMDashboardScreen.dart';
 import 'package:fluttersalonapp/controllers/auth_controller.dart';
 
 class BMLoginScreen extends StatefulWidget {
@@ -95,7 +91,7 @@ class _BMLoginScreenState extends State<BMLoginScreen> {
                       Text('Password', style: primaryTextStyle(color: appStore.isDarkModeOn ? bmTextColorDarkMode : bmSpecialColor, size: 14)),
                       TextButton(
                         onPressed: () {
-                        //  BMForgetPasswordScreen().launch(context);
+                         BMForgetPasswordScreen().launch(context);
                         },
                         child: Text('Forgot Password', style: boldTextStyle(color: appStore.isDarkModeOn ? bmPrimaryColor : bmGreyColor, size: 14)),
                       )
@@ -135,7 +131,7 @@ class _BMLoginScreenState extends State<BMLoginScreen> {
                   //     builder: (context) => const Home(),
                   //   ),
                   // );
-                   BMWalkThroughScreen().launch(context);
+                   BMDashboardScreen(flag: false,).launch(context);
 
                 }
                 ScaffoldMessenger.of(context).showSnackBar(

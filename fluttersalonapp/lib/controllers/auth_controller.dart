@@ -1,6 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttersalonapp/screens/BMWalkThroughScreen.dart';
 import 'package:get/get.dart';
 import 'package:fluttersalonapp/screens/BMLoginScreen.dart';
+import 'package:fluttersalonapp/screens/BMDashboardScreen.dart';
+import 'package:fluttersalonapp/screens/BMWalkThroughScreen.dart';
+
+
 
 
 
@@ -24,10 +29,12 @@ class AuthService extends GetxController {
   _initialScreen(User? user) {
     if (user == null) {
       print('login page');
-      Get.offAll(() => BMLoginScreen());
+      Get.offAll(() => BMWalkThroughScreen());
     } else {
       print('user logged in');
       //forward to home page
+      Get.offAll(() => BMDashboardScreen(flag: false,));
+
     }
   }
   Future<String?> registration({

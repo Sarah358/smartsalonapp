@@ -1,5 +1,6 @@
 //region imports
 import 'package:fluttersalonapp/screens/BMSplashScreen.dart';
+import 'package:fluttersalonapp/screens/BMWalkThroughScreen.dart';
 import 'package:fluttersalonapp/store/AppStore.dart';
 import 'package:fluttersalonapp/utils/AppTheme.dart';
 import 'package:fluttersalonapp/utils/BMConstants.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:get/get.dart';
 import 'package:fluttersalonapp/controllers/auth_controller.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       builder: (_) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: '$appName${!isMobile ? ' ${platformName()}' : ''}',
-        home: const BMSplashScreen(),
+        home: const BMWalkThroughScreen(),
         theme: !appStore.isDarkModeOn ? AppThemeData.lightTheme : AppThemeData.darkTheme,
         navigatorKey: navigatorKey,
         scrollBehavior: SBehavior(),

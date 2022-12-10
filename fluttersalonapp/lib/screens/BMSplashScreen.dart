@@ -7,12 +7,14 @@ import 'BMWalkThroughScreen.dart';
 
 class BMSplashScreen extends StatefulWidget {
   const BMSplashScreen({Key? key}) : super(key: key);
+  
 
   @override
   _BMSplashScreenState createState() => _BMSplashScreenState();
 }
 
 class _BMSplashScreenState extends State<BMSplashScreen> {
+
   @override
   void initState() {
     super.initState();

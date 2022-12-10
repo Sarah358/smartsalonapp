@@ -4,7 +4,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../main.dart';
 import '../utils/BMColors.dart';
 import '../utils/BMDataGenerator.dart';
-//import 'BMDashboardScreen.dart';
+import 'BMDashboardScreen.dart';
 import 'BMLoginScreen.dart';
 import 'BMRegisterScreen.dart';
 
@@ -60,7 +60,7 @@ class _BMWalkThroughScreenState extends State<BMWalkThroughScreen> {
                   right: 20,
                   top: 30,
                   child: Text('SKIP', style: boldTextStyle(color: white, size: 14)).onTap(() {
-                  //  BMDashboardScreen(flag: false).launch(context, isNewTask: true);
+                  BMDashboardScreen(flag: false).launch(context, isNewTask: true);
                   }),
                 ),
                 Column(

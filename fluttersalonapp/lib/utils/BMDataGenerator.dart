@@ -12,7 +12,7 @@ import '../models/BMShoppingModel.dart';
 List<WalkThroughModelClass> getWalkThroughList() {
   List<WalkThroughModelClass> list = [];
 
-  list.add(WalkThroughModelClass(image: 'images/model_one.jpg', title: 'Book a visit easy & fast', subTitle: 'Find the best beauty salon in your local and book a dream visit.'));
+  list.add(WalkThroughModelClass(image: 'images/model_one.jpg', title: 'Book a visit easy & fast', subTitle: 'Book your favourite stylist by a few clicks.'));
   list.add(WalkThroughModelClass(image: 'images/model_two.jpg', title: 'Online Services Booking', subTitle: 'For when visiting the shop or salon is not an option, experience beauty in new way.'));
   list.add(WalkThroughModelClass(image: 'images/model_three.jpg', title: 'Book anytime, anywhere', subTitle: 'Access calenders, services, and reviews wuth the freedom to book as you please.'));
 
@@ -34,9 +34,9 @@ List<BMDashboardModel> getDashboardList() {
 List<BMMasterModel> getMyMastersList() {
   List<BMMasterModel> list = [];
 
-  list.add(BMMasterModel(image: 'images/face_two.jpg', name: 'Hannah Benson'));
-  list.add(BMMasterModel(image: 'images/face_one.png', name: 'Maurice Reynolds'));
-  list.add(BMMasterModel(image: 'images/model_three.jpg', name: 'Hannah Benson'));
+  list.add(BMMasterModel(image: 'images/face_two.jpg', name: 'Ann Johnson'));
+  list.add(BMMasterModel(image: 'images/face_one.png', name: 'Mark Brian '));
+  list.add(BMMasterModel(image: 'images/model_three.jpg', name: 'Elly Benson'));
 
   return list;
 }
@@ -44,10 +44,12 @@ List<BMMasterModel> getMyMastersList() {
 List<BMMasterModel> getTopServicesHomeList() {
   List<BMMasterModel> list = [];
 
-  list.add(BMMasterModel(image: 'images/salon.png', name: 'Hair Salon'));
-  list.add(BMMasterModel(image: 'images/nail-polish.png', name: 'Nail Salon'));
-  list.add(BMMasterModel(image: 'images/makeup.png', name: 'Beauty Salon'));
-  list.add(BMMasterModel(image: 'images/makeup_kit.png', name: 'Beauty Salon'));
+  list.add(BMMasterModel(image: 'images/salon.png', name: 'Hair'));
+   list.add(BMMasterModel(image: 'images/nail-polish.png', name: 'Nails'));
+  list.add(BMMasterModel(image: 'images/makeup.png', name: 'Facial'));
+  list.add(BMMasterModel(image: 'images/massage.jpg', name: 'Massage'));
+  list.add(BMMasterModel(image: 'images/barber.jpg', name: 'Barber'));
+  list.add(BMMasterModel(image: 'images/makeup_kit.png', name: 'Makeup'));
 
   return list;
 }
@@ -56,43 +58,43 @@ List<BMCommonCardModel> getSpecialOffersList() {
   List<BMCommonCardModel> list = [];
 
   list.add(BMCommonCardModel(
-    title: 'Fly Trim Hair Studio',
-    image: 'images/salon_one.jpg',
+    title: 'Stitch Lines',
+    image: 'images/stitches.jpg',
     saveTag: true,
-    subtitle: '131-18 Merrick Blvd, Jamaica,Ny 11434',
+    subtitle: 'Get the best stitch lines at 20% off',
     rating: '5.0',
     comments: '240',
-    distance: '0.5 mil',
+    distance: 'ksh 1500',
     liked: true,
   ));
   list.add(BMCommonCardModel(
-    title: 'Paul Cuts',
-    image: 'images/salon_two.jpg',
+    title: 'Cornrows',
+    image: 'images/screen-8.jpg',
     saveTag: true,
-    subtitle: '131-18 Merrick Blvd, Jamaica,Ny 11434',
+    subtitle: 'Get the best cornrow styles at an affordable price',
     rating: '4.9',
-    comments: '192 reviews',
-    distance: '0.7 mil',
+    comments: '192',
+    distance: 'Ksh 1500',
     liked: false,
   ));
   list.add(BMCommonCardModel(
-    title: 'Bio Pinky Nail Salon',
-    image: 'images/salon_four.jpg',
+    title: 'Fresh Cuts',
+    image: 'images/cuts.jpeg',
     saveTag: true,
-    subtitle: '1159w Madison street, 1, Chicago',
+    subtitle: 'Enjoy our fresh haircuts at 20% off',
     rating: '5.0',
     comments: '240',
-    distance: '0.5 mil',
+    distance: 'Ksh 500',
     liked: true,
   ));
   list.add(BMCommonCardModel(
-    title: 'Savanna',
-    image: 'images/salon_three.jpg',
+    title: 'Aclyrics Nails',
+    image: 'images/nails.jpg',
     saveTag: true,
-    subtitle: '2701 Black Rd, Joliet, II, 60435',
+    subtitle: 'Aclyrics nails at 20% off ',
     rating: '4.8',
-    comments: '1.2k reviews',
-    distance: '0.5 mil',
+    comments: '120',
+    distance: 'Ksh 1000',
     liked: false,
   ));
 
@@ -105,43 +107,43 @@ List<BMCommonCardModel> getFavList() {
   List<BMCommonCardModel> list = [];
 
   list.add(BMCommonCardModel(
-    title: 'Fly Trim Hair Studio',
-    image: 'images/salon_one.jpg',
+    title: 'Natural Hairstyles',
+    image: 'images/natural.jpg',
     saveTag: false,
-    subtitle: '131-18 Merrick Blvd, Jamaica,Ny 11434',
+    subtitle: 'Get natural hairstyles from our best hairstyles',
     rating: '5.0',
     comments: '240',
-    distance: '0.5 mil',
+    distance: 'from ksh 500',
     liked: true,
   ));
   list.add(BMCommonCardModel(
-    title: 'Paul Cuts',
-    image: 'images/salon_two.jpg',
+    title: 'Makeup',
+    image: 'images/makeuplook.jpg',
     saveTag: false,
-    subtitle: '131-18 Merrick Blvd, Jamaica,Ny 11434',
+    subtitle: 'Makeup services at the best rates',
     rating: '4.9',
-    comments: '192 reviews',
-    distance: '0.7 mil',
+    comments: '192',
+    distance: 'from Ksh 1000',
     liked: true,
   ));
   list.add(BMCommonCardModel(
-    title: 'Bio Pinky Nail Salon',
-    image: 'images/salon_four.jpg',
+    title: 'Knotless Braids',
+    image: 'images/knotless.jpg',
     saveTag: false,
-    subtitle: '1159w Madison street, 1, Chicago',
+    subtitle: 'painless and light knotless braids ',
     rating: '5.0',
     comments: '240',
-    distance: '0.5 mil',
+    distance: 'from Ksh 2000',
     liked: true,
   ));
   list.add(BMCommonCardModel(
-    title: 'Savanna',
-    image: 'images/salon_three.jpg',
+    title: 'DreadLocs',
+    image: 'images/locs.jpg',
     saveTag: false,
-    subtitle: '2701 Black Rd, Joliet, II, 60435',
+    subtitle: 'We offer the best dreadlocs styles ',
     rating: '4.8',
-    comments: '1.2k reviews',
-    distance: '0.5 mil',
+    comments: '150',
+    distance: 'from Ksh 1000',
     liked: true,
   ));
 
@@ -154,47 +156,47 @@ List<BMCommonCardModel> getRecommendedList() {
   List<BMCommonCardModel> list = [];
 
   list.add(BMCommonCardModel(
-    title: 'Savanna',
-    image: 'images/salon_three.jpg',
+    title: 'Natural Hairstyles',
+    image: 'images/natural.jpg',
     saveTag: false,
-    subtitle: '2701 Black Rd, Joliet, II, 60435',
+    subtitle: 'Get natural hairstyles from our best hairstyles',
     rating: '4.8',
     comments: '1.2k',
-    distance: '0.5 mil',
+    distance: 'from ksh 500',
     liked: false,
     likes: '124',
   ));
   list.add(BMCommonCardModel(
-    title: 'Bio Pinky Nail Salon',
-    image: 'images/salon_four.jpg',
+    title: 'Makeup Looks ',
+    image: 'images/makeuplook.jpg',
     saveTag: false,
-    subtitle: '1159w Madison street, 1, Chicago',
+    subtitle: 'Makeup services at the best rates',
     rating: '5.0',
     comments: '240',
-    distance: '0.5 mil',
+    distance: 'from ksh 1000',
     liked: true,
     likes: '23',
   ));
 
   list.add(BMCommonCardModel(
-    title: 'Fly Trim Hair Studio',
-    image: 'images/salon_one.jpg',
+    title: 'Knotless Braids',
+    image: 'images/knotless.jpg',
     saveTag: false,
-    subtitle: '131-18 Merrick Blvd, Jamaica,Ny 11434',
+    subtitle: 'Easy,painless and light knotless braids',
     rating: '5.0',
     comments: '240',
-    distance: '0.5 mil',
+    distance: 'from ksh 2000',
     liked: true,
     likes: '258',
   ));
   list.add(BMCommonCardModel(
-    title: 'Paul Cuts',
-    image: 'images/salon_two.jpg',
+    title: 'DreadLocs',
+    image: 'images/locs.jpg',
     saveTag: false,
-    subtitle: '131-18 Merrick Blvd, Jamaica,Ny 11434',
+    subtitle: 'We offer the best dreadlocs styles',
     rating: '4.9',
     comments: '192',
-    distance: '0.7 mil',
+    distance: 'from ksh 2000',
     liked: false,
     likes: '501',
   ));
