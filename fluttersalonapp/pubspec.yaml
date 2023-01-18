@@ -28,6 +28,7 @@ dependencies:
   flutter_vector_icons: ^2.0.0
   cloud_firestore: ^4.1.0
   get:
+ 
 
 
 
@@ -49,6 +50,13 @@ dependencies:
 
   # UI
   flutter_svg: ^1.1.6
+  im_stepper: any
+  flutter_calendar_carousel: ^2.4.1
+  flutter_rating_bar: any
+  flutter_datetime_picker: any
+
+  
+ 
 
 dev_dependencies:
   flutter_test:

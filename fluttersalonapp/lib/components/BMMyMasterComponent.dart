@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import '../models/BMMasterModel.dart';
 import '../screens/BMCalenderScreen.dart';
+import '../screens/bookingscreen.dart';
+
 import '../utils/BMColors.dart';
 import '../utils/BMDataGenerator.dart';
 
@@ -43,7 +45,7 @@ class BMMyMasterComponent extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                         color: bmPrimaryColor,
                         onTap: () {
-                          BMCalenderScreen(isStaffBooking: true).launch(context);
+                          SalonBooking().launch(context);
                         },
                       ),
                     ),
