@@ -13,6 +13,8 @@ import 'package:fluttersalonapp/cloud_firestore/allservicesref.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:fluttersalonapp/utils/utils.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class SalonBooking extends StatefulWidget {
   @override
@@ -31,6 +33,7 @@ class _SalonBookingState extends State<SalonBooking> {
   bool isServicebranchSelected = false;
   DateTime _selectedDate = DateTime.now();
   String _selectedTime = '';
+ 
 
   void selectService(String name) {
     _selectedService = name;
@@ -79,7 +82,7 @@ class _SalonBookingState extends State<SalonBooking> {
                           : _currentStep == 3
                               ? displayTimeSlot(context, _selectedStylist)
                               : _currentStep == 4
-                                  ? confirmBooking(context)
+                                  ? displayConfirm(context)
                                   : Container(),
             ),
 
@@ -382,18 +385,16 @@ class _SalonBookingState extends State<SalonBooking> {
   }
 
   //confirmbooking method
-  confirmBooking(BuildContext context) {
+confirmBooking(BuildContext context) {
+   //var hour = int.parse(_selectedTime.split(':')[0].padLeft(2, "0"));
+    //var minutes = int.parse(_selectedTime.split(':')[1].padLeft(2, "0"));
     var timeStamp = DateTime(
       _selectedDate.year,
       _selectedDate.month,
       _selectedDate.day,
-      int.parse(
-        _selectedTime.split(':')[0].substring(0, 2),
-      ), //hour
-      int.parse(
-        _selectedTime.split(':')[1].substring(0, 2),
-      ), //minutes
-    ).microsecond;
+      //hour,
+      //minutes
+    ).microsecondsSinceEpoch ~/ 1000;
     var submitData = {
       'service': _selectedService,
       'servicebranch': _selectedbranchService,
@@ -406,16 +407,15 @@ class _SalonBookingState extends State<SalonBooking> {
       'time':
           '${_selectedTime} - ${DateFormat('dd/MM/yyyy').format(_selectedDate)}',
     };
-
-//submit on firestore
-    _selectedStylist.reference
+    FirebaseFirestore.instance
+        .collection('stylist')
+        .doc(_selectedStylist)
         .collection('${DateFormat('dd_MM_yyyy').format(_selectedDate)}')
         .doc(_selectedTime)
-        .toString()
         .set(submitData)
         .then((value) {
           Navigator.of(context).pop();
-      ScaffoldMessenger.of(scaffoldKey.currentContext).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Booked successfully'),
         ),
@@ -423,5 +423,115 @@ class _SalonBookingState extends State<SalonBooking> {
       // reset value
       _selectedDate = DateTime.now();
     });
+  }
+
+
+
+  displayConfirm(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Image.asset('images/salon_three.jpg'),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            child: Card(
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    Text(
+                      'Thank you for booking our services !'.toUpperCase(),
+                      style:
+                          GoogleFonts.robotoMono(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Booking information !'.toUpperCase(),
+                      style: GoogleFonts.robotoMono(),
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.calendar_today),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          '${_selectedTime} - ${DateFormat('dd/MM/yyyy').format(_selectedDate)}',
+                          style: GoogleFonts.robotoMono(),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.person),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          '${_selectedStylist} ',
+                          style: GoogleFonts.robotoMono(),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Divider(
+                      thickness: 2,
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.home),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          '${_selectedbranchService} ',
+                          style: GoogleFonts.robotoMono(),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.price_check),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          '${_selectedbranchServicePrice} ',
+                          style: GoogleFonts.robotoMono(),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton(
+                      onPressed: () => {confirmBooking(context)},
+                      child: Text('Confirm'),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.black26),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
