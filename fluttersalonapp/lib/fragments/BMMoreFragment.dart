@@ -37,7 +37,7 @@ class _BMMoreFragmentState extends State<BMMoreFragment> {
           upperContainer(
             screenContext: context,
             child: Column(
-              children: [16.height, Image.asset('images/face_two.jpg', height: 100, width: 100, fit: BoxFit.cover).cornerRadiusWithClipRRect(100), 8.height, Text('anita@gmail.com', style: boldTextStyle(color: white))],
+              children: [16.height, Image.asset('images/me.jpeg', height: 100, width: 100, fit: BoxFit.cover).cornerRadiusWithClipRRect(100), 8.height, Text('njerinjuguna358@gmail.com', style: boldTextStyle(color: white))],
             ),
           ),
           lowerContainer(

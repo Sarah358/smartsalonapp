@@ -34,9 +34,9 @@ List<BMDashboardModel> getDashboardList() {
 List<BMMasterModel> getMyMastersList() {
   List<BMMasterModel> list = [];
 
-  list.add(BMMasterModel(image: 'images/face_two.jpg', name: 'Ann Johnson'));
-  list.add(BMMasterModel(image: 'images/face_one.png', name: 'Mark Brian '));
-  list.add(BMMasterModel(image: 'images/model_three.jpg', name: 'Elly Benson'));
+  list.add(BMMasterModel(image: 'images/face_two.jpg', name: 'Sarah Brians'));
+  list.add(BMMasterModel(image: 'images/face_one.png', name: 'John Mark'));
+  list.add(BMMasterModel(image: 'images/model_three.jpg', name: 'Oliver Benson'));
 
   return list;
 }
@@ -207,9 +207,9 @@ List<BMCommonCardModel> getRecommendedList() {
 List<BMServiceListModel> getPopularServiceList() {
   List<BMServiceListModel> list = [];
 
-  list.add(BMServiceListModel(name: 'Men\'s Hair cut', cost: '\$50.00', time: '1h'));
-  list.add(BMServiceListModel(name: 'Men\'s Hair cut with beard', cost: '\$45.00', time: '30min'));
-  list.add(BMServiceListModel(name: 'Glow Me Color', cost: '\$30.00', time: '1h'));
+  list.add(BMServiceListModel(name: 'Men\'s Hair cut', cost: 'ksh 500', time: '1h'));
+  list.add(BMServiceListModel(name: 'Men\'s Hair cut with beard', cost: 'ksh 450', time: '30min'));
+  list.add(BMServiceListModel(name: 'Full makeup', cost: 'ksh 1500', time: '1h'));
 
   return list;
 }
@@ -217,12 +217,12 @@ List<BMServiceListModel> getPopularServiceList() {
 List<BMServiceListModel> getOtherServiceList() {
   List<BMServiceListModel> list = [];
 
-  list.add(BMServiceListModel(name: 'Early Bird Special(text to schedule)', cost: '\$25.00', time: '35min'));
-  list.add(BMServiceListModel(name: 'Men\'s Hair cut with beard', cost: '\$18.00', time: '30min'));
-  list.add(BMServiceListModel(name: 'Kid\'s Haircut(12 & under)', cost: '\$12.00', time: '45min'));
-  list.add(BMServiceListModel(name: 'Full VIP Service', cost: '\$20.00', time: '30min'));
-  list.add(BMServiceListModel(name: 'Men\'s Hair cut', cost: '\$50.00', time: '15min'));
-  list.add(BMServiceListModel(name: 'Edge w/Beard trim beard', cost: '\$5.00', time: '30min'));
+  list.add(BMServiceListModel(name: 'Knottless Braids', cost: 'ksh 2500', time: '35min'));
+  list.add(BMServiceListModel(name: 'Full body massage', cost: 'Ksh 1800', time: '30min'));
+  list.add(BMServiceListModel(name: 'Manicure with aclyrics', cost: 'ksh 1200', time: '45min'));
+  list.add(BMServiceListModel(name: 'Body scrubbing + sauna', cost: 'ksh 2000', time: '30min'));
+  list.add(BMServiceListModel(name: 'Men\'s Hair cut', cost: 'ksh 500', time: '15min'));
+  list.add(BMServiceListModel(name: 'Edge w/Beard trim beard', cost: 'ksh 500', time: '30min'));
 
   return list;
 }
@@ -230,11 +230,11 @@ List<BMServiceListModel> getOtherServiceList() {
 List<BMCommentModel> getCommentsList() {
   List<BMCommentModel> list = [];
 
-  list.add(BMCommentModel(image: 'images/face_one.png', likes: '4', time: '3m', name: 'Donald Walters', message: 'Nice work, bro!', isSubComment: false, isLiked: false));
-  list.add(BMCommentModel(image: 'images/face_two.jpg', likes: '2', time: '3m', name: 'Roxie Love', message: 'How many time for this style?', isSubComment: false, isLiked: true));
-  list.add(BMCommentModel(image: 'images/face_one.png', likes: '2', time: '3m', name: 'Cotherine Guzman', message: '45 minutes. maybe.', isSubComment: true, isLiked: false));
-  list.add(BMCommentModel(image: 'images/face_two.jpg', likes: '4', time: '20m', name: 'Nwaye Akachi', message: 'Good work!', isSubComment: false, isLiked: false));
-  list.add(BMCommentModel(image: 'images/face_one.png', likes: '4', time: '2d', name: 'Cvita Dolwschall', message: 'Suite with me, let\'s go!', isSubComment: false, isLiked: false));
+  list.add(BMCommentModel(image: 'images/face_one.png', likes: '4', time: '3m', name: 'John', message: 'Nice work, bro!', isSubComment: false, isLiked: false));
+  list.add(BMCommentModel(image: 'images/face_two.jpg', likes: '2', time: '3m', name: 'Sarah', message: 'How many time for this style?', isSubComment: false, isLiked: true));
+  list.add(BMCommentModel(image: 'images/face_one.png', likes: '2', time: '3m', name: 'John', message: '45 minutes. maybe.', isSubComment: true, isLiked: false));
+  list.add(BMCommentModel(image: 'images/face_two.jpg', likes: '4', time: '20m', name: 'Sarah', message: 'Good work!', isSubComment: false, isLiked: false));
+  list.add(BMCommentModel(image: 'images/face_one.png', likes: '4', time: '2d', name: 'John', message: 'Suite with me, let\'s go!', isSubComment: false, isLiked: false));
 
   return list;
 }
@@ -244,11 +244,11 @@ List<BMAppointmentModel> getAppointments() {
 
   list.add(BMAppointmentModel(
     image: 'images/face_one.png',
-    time: '9:30 PM - 10.30 PM (1h)',
+    time: '3:00 PM - 4.00 PM (1h)',
     isSelected: true,
-    product: '1 product',
-    salonName: 'PACHA\'S Luciano',
-    service: 'Men\'s Hair cut',
+    product: 'Hair services',
+    salonName: 'Knotless Braids (2000)',
+    service: 'John  (5)' ,
   ));
 
   return list;
@@ -258,20 +258,20 @@ List<BMAppointmentModel> getMoreAppointmentsList() {
   List<BMAppointmentModel> list = [];
 
   list.add(BMAppointmentModel(
-    image: 'images/face_one.png',
-    time: '9:30 PM - 10.30 PM (1h)',
+    image: 'images/model_three.jpg',
+    time: '8:00 AM - 9.00 AM (1d)',
     isSelected: false,
-    product: '1 product',
-    salonName: 'PACHA\'S Luciano',
-    service: 'Men\'s Hair cut',
+    product: 'makeup services',
+    salonName: 'Full makeup (1500)',
+    service: 'Sarah(4.5)',
   ));
   list.add(BMAppointmentModel(
     image: 'images/face_two.jpg',
-    time: '14:30 PM - 15.30 PM',
+    time: '2:00 PM - 3:00 PM',
     isSelected: false,
-    product: '1 product',
-    salonName: 'Uncle will Da Barber',
-    service: 'Hair cut + Deluxe Beard/ Facial Service',
+    product: 'Barber services',
+    salonName: 'Shave (500)',
+    service: 'Olive (3)',
   ));
 
   return list;
@@ -280,8 +280,8 @@ List<BMAppointmentModel> getMoreAppointmentsList() {
 List<BMMessageModel> getActiveList() {
   List<BMMessageModel> list = [];
 
-  list.add(BMMessageModel(image: 'images/face_two.jpg', name: 'Hannah Benson', message: 'Hello!', isActive: true, lastSeen: ''));
-  list.add(BMMessageModel(image: 'images/face_two.jpg', name: 'Harry Gardner', message: 'How can I help you?', isActive: true, lastSeen: ''));
+  list.add(BMMessageModel(image: 'images/face_two.jpg', name: 'Sarah', message: 'Hello!', isActive: true, lastSeen: ''));
+  list.add(BMMessageModel(image: 'images/face_two.jpg', name: 'Sarah', message: 'How can I help you?', isActive: true, lastSeen: ''));
 
   return list;
 }
@@ -289,9 +289,9 @@ List<BMMessageModel> getActiveList() {
 List<BMMessageModel> getMessageList() {
   List<BMMessageModel> list = [];
 
-  list.add(BMMessageModel(image: 'images/face_two.jpg', name: 'Hannah Benson', message: 'Hello!', isActive: true, lastSeen: ''));
-  list.add(BMMessageModel(image: 'images/face_one.png', name: 'Victor Pocheco', message: 'Do you want to confirm yor appointment?', isActive: false, lastSeen: 'today , at 11:30 am'));
-  list.add(BMMessageModel(image: 'images/model_three.jpg', name: 'Harry Gardner', message: 'How can I help you?', isActive: true, lastSeen: ''));
+  list.add(BMMessageModel(image: 'images/face_two.jpg', name: 'Sarah', message: 'Hello!', isActive: true, lastSeen: ''));
+  list.add(BMMessageModel(image: 'images/face_one.png', name: 'John', message: 'Do you want to confirm yor appointment?', isActive: false, lastSeen: 'today , at 11:30 am'));
+  list.add(BMMessageModel(image: 'images/model_three.jpg', name: 'Oliver', message: 'How can I help you?', isActive: true, lastSeen: ''));
 
   return list;
 }

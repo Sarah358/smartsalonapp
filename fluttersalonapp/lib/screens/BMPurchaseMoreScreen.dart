@@ -27,7 +27,7 @@ class PurchaseMoreScreen extends StatelessWidget {
                   Container(
                     decoration: boxDecorationDefault(),
                     padding: EdgeInsets.all(16),
-                    child: Image.asset("images/beautymaster_logo.png", height: 100),
+                    child: Image.asset("images/salon_three.jpg", height: 100),
                   ),
                   22.height,
                   Text(
@@ -36,15 +36,15 @@ class PurchaseMoreScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   16.height,
-                  AppButton(
-                    text: 'EXPLORE MORE',
-                    color: context.primaryColor,
-                    textStyle: boldTextStyle(color: Colors.white),
-                    shapeBorder: RoundedRectangleBorder(borderRadius: radius(10)),
-                    onTap: () {
-                      //launch("https://codecanyon.net/item/prokit-flutter-app-ui-design-templete-kit/25787190?s_rank=19");
-                    },
-                  )
+                  // AppButton(
+                  //   text: 'EXPLORE MO',
+                  //   color: context.primaryColor,
+                  //   textStyle: boldTextStyle(color: Colors.white),
+                  //   shapeBorder: RoundedRectangleBorder(borderRadius: radius(10)),
+                  //   onTap: () {
+                  //     //launch("https://codecanyon.net/item/prokit-flutter-app-ui-design-templete-kit/25787190?s_rank=19");
+                  //   },
+                  // )
                 ],
               ),
             ).paddingAll(16),

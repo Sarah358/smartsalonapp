@@ -52,7 +52,7 @@ Future<List<int>> getTimeSlotsOfStylist(String stylist, String date) async {
     List<String> timeslot = time.split("-");
     int starttime = int.parse(timeslot[0].split(":")[0]);
     int endtime = int.parse(timeslot[1].split(":")[0]);
-    result.addAll(List.generate(endtime - starttime, (i) => i + starttime));
+    result.addAll(List.generate(endtime - starttime, (i) => i));
   });
   return result;
 }

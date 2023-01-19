@@ -6,6 +6,7 @@ import '../models/BMServiceListModel.dart';
 import '../utils/BMBottomSheet.dart';
 import '../utils/BMColors.dart';
 import '../utils/BMWidgets.dart';
+import 'package:fluttersalonapp/screens/bookingscreen.dart';
 
 class BMServiceComponent extends StatelessWidget {
   BMServiceListModel element;
@@ -63,7 +64,8 @@ class BMServiceComponent extends StatelessWidget {
               child: Text('Book', style: boldTextStyle(color: Colors.white, size: 12)),
               color: bmPrimaryColor,
               onTap: () {
-                showBookBottomSheet(context, element);
+                 //bookingscreen().launch(context);
+               // showBookBottomSheet(context, element);
               },
             ),
           ],
