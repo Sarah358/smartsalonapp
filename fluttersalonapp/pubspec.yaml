@@ -28,6 +28,8 @@ dependencies:
   flutter_vector_icons: ^2.0.0
   cloud_firestore: ^4.1.0
   get:
+  ntp: any
+  add_2_calendar: any
  
 
 

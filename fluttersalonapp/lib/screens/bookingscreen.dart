@@ -15,7 +15,6 @@ import 'package:intl/intl.dart';
 import 'package:fluttersalonapp/utils/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class SalonBooking extends StatefulWidget {
   @override
   _SalonBookingState createState() => _SalonBookingState();
@@ -33,7 +32,6 @@ class _SalonBookingState extends State<SalonBooking> {
   bool isServicebranchSelected = false;
   DateTime _selectedDate = DateTime.now();
   String _selectedTime = '';
- 
 
   void selectService(String name) {
     _selectedService = name;
@@ -80,7 +78,10 @@ class _SalonBookingState extends State<SalonBooking> {
                       : _currentStep == 2
                           ? displayStylist(_selectedService)
                           : _currentStep == 3
-                              ? displayTimeSlot(context, _selectedStylist)
+                              ? displayTimeSlot(
+                                  context,
+                                  _selectedStylist,
+                                )
                               : _currentStep == 4
                                   ? displayConfirm(context)
                                   : Container(),
@@ -323,7 +324,7 @@ class _SalonBookingState extends State<SalonBooking> {
                 onTap: () {
                   DatePicker.showDatePicker(context,
                       showTitleActions: true,
-                      minTime: now,
+                      minTime: DateTime.now(),
                       maxTime: now.add(
                         Duration(days: 31),
                       ),
@@ -348,53 +349,96 @@ class _SalonBookingState extends State<SalonBooking> {
           ),
         ),
         Expanded(
-          child: GridView.builder(
-              itemCount: TIME_SLOT.length,
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-              itemBuilder: (context, index) => GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _selectedTime = TIME_SLOT.elementAt(index);
-                      });
-                    },
-                    child: Card(
-                      color: _selectedTime == TIME_SLOT.elementAt(index)
-                          ? Colors.white54
-                          : Colors.white,
-                      child: GridTile(
-                        child: Center(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('${TIME_SLOT.elementAt(index)}'),
-                              Text('Available'),
-                            ],
-                          ),
-                        ),
-                        header: _selectedTime == TIME_SLOT.elementAt(index)
-                            ? Icon(Icons.check)
-                            : null,
+            child: FutureBuilder(
+                future: getMaxAvailableTimeSlot(_selectedDate),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  else {
+                   
+                    var maxTimeSlot = snapshot.data as int;
+                    return FutureBuilder(
+                      future: getTimeSlotsOfStylist(
+                        selectedStylist,
+                        DateFormat('dd_MM_yyyy').format(_selectedDate),
                       ),
-                    ),
-                  )),
-        )
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting)
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        else {
+                          var listTimeSlot = snapshot.data as List<int>;
+                          return GridView.builder(
+                            itemCount: TIME_SLOT.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3),
+                            itemBuilder: (context, index) => GestureDetector(
+                              onTap: maxTimeSlot > index ||
+                                      listTimeSlot.contains(index)
+                                  ? null
+                                  : () {
+                                      setState(() {
+                                        _selectedTime =
+                                            TIME_SLOT.elementAt(index);
+                                      });
+                                    },
+                              child: Card(
+                                color: maxTimeSlot > index ||
+                                        listTimeSlot.contains(index)
+                                    ? Colors.white10
+                                    : _selectedTime ==
+                                            TIME_SLOT.elementAt(index)
+                                        ? Colors.white54
+                                        : Colors.white,
+                                child: GridTile(
+                                  child: Center(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text('${TIME_SLOT.elementAt(index)}'),
+                                        Text(maxTimeSlot > index
+                                            ? 'Not Available'
+                                            : listTimeSlot.contains(index)
+                                                ? 'Full'
+                                                : 'Available'),
+                                      ],
+                                    ),
+                                  ),
+                                  header: _selectedTime ==
+                                          TIME_SLOT.elementAt(index)
+                                      ? Icon(Icons.check)
+                                      : null,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  }
+                }))
       ],
     );
   }
 
   //confirmbooking method
-confirmBooking(BuildContext context) {
-   //var hour = int.parse(_selectedTime.split(':')[0].padLeft(2, "0"));
-    //var minutes = int.parse(_selectedTime.split(':')[1].padLeft(2, "0"));
-    var timeStamp = DateTime(
-      _selectedDate.year,
-      _selectedDate.month,
-      _selectedDate.day,
-      //hour,
-      //minutes
-    ).microsecondsSinceEpoch ~/ 1000;
+  confirmBooking(BuildContext context) {
+    var hour = _selectedTime.length <= 10
+        ? int.parse(_selectedTime.split(':')[0].substring(0, 1))
+        : int.parse(_selectedTime.split(':')[0].substring(0, 2));
+    var minutes = _selectedTime.length <= 10
+        ? int.parse(_selectedTime.split(':')[1].substring(0, 1))
+        : int.parse(_selectedTime.split(':')[1].substring(0, 2));
+    var timeStamp = DateTime(_selectedDate.year, _selectedDate.month,
+            _selectedDate.day, hour, minutes)
+        .microsecondsSinceEpoch;
     var submitData = {
       'service': _selectedService,
       'servicebranch': _selectedbranchService,
@@ -414,7 +458,7 @@ confirmBooking(BuildContext context) {
         .doc(_selectedTime)
         .set(submitData)
         .then((value) {
-          Navigator.of(context).pop();
+      Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Booked successfully'),
@@ -424,8 +468,6 @@ confirmBooking(BuildContext context) {
       _selectedDate = DateTime.now();
     });
   }
-
-
 
   displayConfirm(BuildContext context) {
     return Column(
@@ -522,7 +564,8 @@ confirmBooking(BuildContext context) {
                       onPressed: () => {confirmBooking(context)},
                       child: Text('Confirm'),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.black26),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black26),
                       ),
                     ),
                   ],
