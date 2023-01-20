@@ -12,3 +12,14 @@ People can make an appointment with the salon any time that suits them for whate
 - Visual studio code
 - firebase
 - Azure devops
+
+## How to run the app
+
+1. Clone repo - ```https://github.com/Sarah358/smartsalonapp.git```
+2. run  ```flutter pub get```
+3. Navigate to main.dart and run the project or use the command ``` flutter run ```
+
+## App screenshots
+
+
+  
