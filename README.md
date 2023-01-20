@@ -20,6 +20,7 @@ People can make an appointment with the salon any time that suits them for whate
 3. Navigate to main.dart and run the project or use the command ``` flutter run ```
 
 ## App screenshots
+<img src="Screenshot_1674201618.png" width="150"> 
 
 
   
