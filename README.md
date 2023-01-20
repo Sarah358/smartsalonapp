@@ -2,9 +2,8 @@
 
 Smart salon is an online appointment booking salon mobile application for executive salon and barber shop which runs on android devices that allows their customers to book appointments per their needs. 
 People can make an appointment with the salon any time that suits them for whatever service and stylist they want provided the time slot is available.
- Hence, it will be a useful app for both salon owners and customers with online salon booking.
-  While customers can book appointments online, the salon owner will easily manage and schedule appointments.
-   Online booking will also benefit shop owners. Owners don’t need to hire someone for this tedious task.
+ Hence, it will be a useful app for both executive salon staff and their customers since customers won't have to queue to get services.
+
 
 ## Technologies used
 - Flutter
