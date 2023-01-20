@@ -20,7 +20,20 @@ People can make an appointment with the salon any time that suits them for whate
 3. Navigate to main.dart and run the project or use the command ``` flutter run ```
 
 ## App screenshots
-<img src="Screenshot_1674201618.png" width="150"> 
+<img src="Screenshot_1674201618.png" width="180"> &nbsp;&nbsp;&nbsp;<img src="Screenshot_1674201646.png" width="180"> &nbsp;&nbsp; &nbsp; <img src="Screenshot_1674201652.png" width="180"> &nbsp; &nbsp; &nbsp;
+<img src="Screenshot_1674201670.png" width="180">&nbsp;&nbsp; &nbsp;  <img src="Screenshot_1674201682.png" width="180">  
+
+###
+
+<img src="Screenshot_1674201696.png" width="180">&nbsp;&nbsp;&nbsp;<img src="Screenshot_1674201702.png" width="180">  &nbsp; &nbsp; &nbsp; <img src="Screenshot_1674201714.png" width="180"> &nbsp; &nbsp; &nbsp; <img src="Screenshot_1674201753.png" width="180">&nbsp; &nbsp; &nbsp;  <img src="Screenshot_1674201757.png" width="180">    
+
+###
+
+<img src="Screenshot_1674201761.png" width="180">&nbsp; &nbsp; &nbsp; <img src="Screenshot_1674201768.png" width="180">  &nbsp; &nbsp; &nbsp; <img src="Screenshot_1674201791.png" width="180">&nbsp; &nbsp; &nbsp;<img src="Screenshot_1674201798.png" width="180"> &nbsp; &nbsp; &nbsp;   <img src="Screenshot_1674201801.png" width="180"> 
+
+###
+
+<img src="Screenshot_1674201813.png" width="180">&nbsp; &nbsp; &nbsp; <img src="Screenshot_1674201817.png" width="180">&nbsp; &nbsp; &nbsp; <img src="Screenshot_1674201823.png" width="180">
 
 
   
